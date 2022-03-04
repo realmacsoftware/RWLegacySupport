@@ -21,10 +21,13 @@ Subclassing anything in the API makes it very hard for us to make any changes so
 1. Add legacy support code
     This repository contains legacy code you may be using from the RW8 SDK. You only need to include the files your plugin requires.
     If you need `RWLegacyEntityConversion`, you must also add the `-fcxx-modules` flag to Compiler Flags in Compile Sources under Build Phases
+    
+    <img width="515" alt="Screenshot 2022-03-04 at 15 08 54" src="https://user-images.githubusercontent.com/143310/156795793-abcd6b1d-2de7-468c-92bd-0013dcc2a602.png">
+
 
 1. Fix up the code
     - Change occurrences of `RWPlugin` to `RWPluginProtocol`
-    - Change uses of `+[RWAbstractPlugin pathToAppTempDirectory]` to `-[RWAbstractPlugin tempFilesDirectory:]`
+    - Change uses of `+[RWAbstractPlugin pathToAppTempDirectory]` to `-[RWAbstractPlugin tempFilesDirectory:]`
     - Change occurrences of `RWLinkStyleAbsolute` to `RWKitLinkStyleAbsolute`
     - Change occurrences of `RWHTMLView` to `RWCodeView` and set the language to HTML `myCodeView.language = RWCodeHighlightingLanguageHTML;`
     - Remove calls to broadcastMediaChanged, these shouldn’t be needed
