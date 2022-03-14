@@ -68,3 +68,24 @@ Authority=Developer ID Certification Authority
 Authority=Apple Root CA
 TeamIdentifier=P97H7FTHWN
 ```
+
+# Notarize the plugin
+
+Create an archive of your plugin, right click and choose "Compress ..."
+
+Use altool to upload the zip to the notary service
+```
+xcrun altool --notarize-app -f [myPlugin.rapidweaverplugin.zip] --primary-bundle-id [Plugin Bundle ID] -u [App Store Connect Username]
+```
+
+Remove the temporary zip file
+
+See the following article to customise the notary process.
+https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow
+
+Once the notary service has completed, staple your plugin
+```
+xcrun stapler staple [myPlugin.rapidweaverplugin]
+```
+
+Finally, create a compressed archive of your stapled plugin for distribution.
